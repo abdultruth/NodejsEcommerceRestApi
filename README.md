@@ -1,4 +1,3 @@
-# NodejsEcommerceRestApi
 # Node.js Express Ecommerce REST API
 
 This repository contains a Node.js and Express-based REST API for building an Ecommerce platform. The API provides endpoints for managing various aspects of an online store, including products, categories, orders, and user authentication.
