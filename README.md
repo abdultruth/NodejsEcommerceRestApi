@@ -24,13 +24,13 @@ This repository contains a Node.js and Express-based REST API for building an Ec
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/ecommerce-rest-api.git`
-2. Navigate to the project directory: `cd ecommerce-rest-api`
+1. Clone the repository: `git clone https://github.com/abdultruth/NodejsEcommerceRestApi.git`
+2. Navigate to the project directory: `cd NodejsEcommerceRestApi`
 3. Install dependencies: `npm install`
 
 ## Usage
 
-1. Set up a MongoDB database and update the connection details in `config/database.js`.
+1. Set up a MongoDB database and update the connection details in `config/db.js`.
 2. Configure other environment variables in a `.env` file (use `.env.example` as a template).
 3. Run the server: `npm start`
 4. The API will be accessible at `http://localhost:3000`.
