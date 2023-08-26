@@ -11,7 +11,6 @@ const getAllActiveCategory = async (req, res, next) => {
 
 const createOne = async (req, res, next) => {
     const category = await Category.create({name: req.body.name});
-
     return res.status(201).json(category);
     next();
 }

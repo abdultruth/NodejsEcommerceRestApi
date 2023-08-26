@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const {getAllActiveCategory, createOne, deleteOne, updateOne} = require('../controllers/categoryController');
+const {
+       getAllActiveCategory,
+       getOne,
+       createOne,
+       deleteOne,
+       updateOne
+      } = require('../controllers/categoryController');
 
 
 
 /* GET users listing. */
-router.get('/', getAllActiveCategory);
+router
+.route('/')
+.get(getAllActiveCategory)
+.post(createOne);
 
-router.post('/', createOne);
-
-router.patch('/:id', updateOne);
-
-router.delete('/:id', deleteOne);
+router
+.route('/:id')
+// .get(getOne)
+.patch(updateOne)
+.delete(deleteOne);
 
 module.exports = router;

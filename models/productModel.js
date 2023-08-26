@@ -12,7 +12,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     name: {
         type: String,
-        required: [true,'a product must have a name !'],
+        required: [true,'A product must have a name !'],
         unique: true,
         trim: true
     },
@@ -23,11 +23,11 @@ const productSchema = new Schema({
     },
     mainImage:{
       type: [String],
-      required: [true,'a product must have at least one image ']
+      required: [true,'A product must have at least one image !']
     },
     images:{
         type: [String],
-        required: [true,'a product must have sub image ']
+        required: [true,'A product must have sub image !']
     },
     imagesId: Array,
     created_at: {
@@ -46,7 +46,7 @@ const productSchema = new Schema({
     },
 
     created_by: {
-        type: mongoose.ObjectId, ref: User
+        type: Schema.Types.ObjectId, ref: User
     },
 
     updated_at: {
@@ -68,12 +68,15 @@ const productSchema = new Schema({
           message: 'Discount price ({VALUE}) should be below regular price'
         }
       },
+      is_active: {
+        type: Boolean, default:false
+      }
 
     
-})
+}, { timestamps: true})
 
 
-const Product = mongoose.model('Product',productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
 

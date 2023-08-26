@@ -1,16 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const {getAllActiveVariation, createOne, deleteOne, updateOne} = require('../controllers/variationController');
+const {getAllActiveVariation, getOne, createOne, deleteOne, updateOne} = require('../controllers/variationController');
 
 
 
 /* GET users listing. */
-router.get('/', getAllActiveVariation);
+router
+.route('/')
+.get(getAllActiveVariation)
+.post(createOne)
 
-router.post('/', createOne);
-
-router.patch('/:id', updateOne);
-
-router.delete('/:id', deleteOne);
+router
+.route('/id')
+// .get(getOne)
+.patch(updateOne)
+.delete(deleteOne)
 
 module.exports = router;

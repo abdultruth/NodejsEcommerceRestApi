@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
@@ -9,6 +8,7 @@ const categorySchema = new Schema({
         required: [true, 'a category must have a name !'],
         unique: true
     },
+
     description: {
         type: String,
         required: true
@@ -20,18 +20,8 @@ const categorySchema = new Schema({
       imageId: {
         type: String,
         required: true
-      },
-    created_at: {
-        type: Date,
-        default: Date.now()
-    },
-
-    updated_at: {
-        type: Date,
-        default: Date.now()
-    },
-
-});
+      }
+}, { timestamps: true});
 
 const Category = mongoose.model("Category", categorySchema);
 
