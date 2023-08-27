@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const {getAllActiveOrders, getOne, createOne, updateOne, deleteOne} = require('../controllers/orderController')
+const authController = require('../controllers/authController')
 
 router
 .route('/')
-.get(getAllActiveOrders)
+.get(authController.protect, getAllActiveOrders)
 .post(createOne)
 
 router

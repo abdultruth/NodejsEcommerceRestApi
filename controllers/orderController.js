@@ -6,6 +6,7 @@ const getAllActiveOrders = async (req, res, next) => {
     const orders = await Orders.find()
     return res.status(200).json({
         status: 'Success',
+        length: orders.length,
         data:{
             orders
         }

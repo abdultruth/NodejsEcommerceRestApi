@@ -44,9 +44,9 @@ const UserSchema = new Schema({
       default: 'user'
   },
   is_active: {
-    type: Boolean, default: true,
-    select: false
-  }
+    type: Boolean, default: true
+  },
+  // passwordChanged: timestamps
 
 }, { timestamps: true});
 
@@ -64,6 +64,11 @@ UserSchema.pre('save', async function(next) {
   next() 
 
 })
+
+
+UserSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
+  return await bcrypt.compare(candidatePassword, userPassword)
+}
 
 
 UserSchema.pre('/^find/', function(next) {

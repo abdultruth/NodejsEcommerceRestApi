@@ -1,21 +1,26 @@
 const express = require('express');
 const router = express.Router();
+
+
 const userController = require('../controllers/userController');
 const Home = require('../controllers/homeController');
+const { protect } = require('../controllers/authController')
 
 
 /* users router listing. */
 router
 .route('/')
-.get(userController.getAllUsers)
-.post(userController.createOneUser)
+.get(protect, userController.getAllUsers)
+.post(protect, userController.createOneUser)
 
 router
 .route('/:id')
-.get(userController.getOne)
-.patch(userController.updateOne)
-.delete(userController.deleteOne)
+.get(protect, userController.getOne)
+.patch(protect, userController.updateOne)
+.delete(protect, userController.deleteOne)
 
-router.get('/cool', Home);
+router
+.route('/')
+.get(Home)
 
 module.exports = router;

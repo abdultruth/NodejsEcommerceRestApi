@@ -3,14 +3,17 @@ const mongoose = require("mongoose");
 
 mongoose.set('strictQuery', false);
 
-const mongoDB = 'mongodb://localhost:27017/truthdb';
+const mongoDB = process.env.DATABASE_LOCAL;
 
  mongoose.connect(mongoDB);
 const db = mongoose.connection;
 
 
-main().catch(error => console.log(error));
+main().then(() => {
+    console.log('Database connected at ', mongoDB)
+}).catch(error => console.log(error));
 
 async function main() {
     await mongoose.connect(mongoDB);
+    
 }

@@ -52,16 +52,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log(`Your ecommerce website is in ${process.env.NODE_ENV} mode ...`)
+
 
 if (process.env.NODE_ENV === 'development') {
+  console.log(`Your ecommerce website is in ${process.env.NODE_ENV} mode ...`)
   app.use(logger(':method :url :status :res[content-length] - :response-time ms :body'))
 }
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/auths', authRouter);
+app.use('/api/accounts', authRouter);
 app.use('/api/variations', variationRouter);
 app.use('/api/categorys', categoryRouter);
 app.use('/api/orders', orderRouter);
